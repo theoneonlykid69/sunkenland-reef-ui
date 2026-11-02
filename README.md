@@ -72,5 +72,3 @@ Open an [issue](https://github.com/theoneonlykid69/sunkenland-reef-ui/issues) wi
 ## Source and credits
 
 See [BUILDING.md](BUILDING.md) to build with references from your own game installation. Release archives include only the mod, its artwork, and documentation. Dependencies and their owners are listed in [THIRD_PARTY.md](THIRD_PARTY.md).
-
-The two metal textures were generated with OpenAI's image generation tool. Prompts and provenance are in [Assets/ARTWORK.md](Assets/ARTWORK.md). Screenshots depict Sunkenland; the game's artwork and trademarks remain with their respective owners and are not relicensed under the mod's MIT license.
