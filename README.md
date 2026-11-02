@@ -41,6 +41,9 @@ These author-supplied screenshots show version **0.9.0**. Version 0.9.1 adds the
 
 ![Character selection in Reef UI 0.9.0](docs/images/character-selection.png)
 
+<img width="1904" height="1078" alt="image" src="https://github.com/user-attachments/assets/e48be217-95cb-4369-bb5c-6c8787daadfb" />
+
+
 ## Compatibility
 
 | Component | Development baseline |
