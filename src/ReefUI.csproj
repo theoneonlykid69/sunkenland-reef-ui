@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Sunkenland.ReefUI</AssemblyName>
+    <Version>0.9.1</Version>
+    <LangVersion>latest</LangVersion>
+    <Deterministic>true</Deterministic>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <PathMap>$(MSBuildProjectDirectory)=/src</PathMap>
+    <GameDir Condition="'$(GameDir)' == ''">$(SUNKENLAND_DIR)</GameDir>
+    <GameManaged Condition="'$(GameManaged)' == '' and '$(GameDir)' != ''">$(GameDir)/Sunkenland_Data/Managed</GameManaged>
+    <BepInExDir Condition="'$(BepInExDir)' == '' and '$(GameDir)' != ''">$(GameDir)/BepInEx</BepInExDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony"><HintPath>$(BepInExDir)/core/0Harmony.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="BepInEx"><HintPath>$(BepInExDir)/core/BepInEx.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine"><HintPath>$(GameManaged)/UnityEngine.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(GameManaged)/UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.UI"><HintPath>$(GameManaged)/UnityEngine.UI.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.UIModule"><HintPath>$(GameManaged)/UnityEngine.UIModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.ImageConversionModule"><HintPath>$(GameManaged)/UnityEngine.ImageConversionModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.TextRenderingModule"><HintPath>$(GameManaged)/UnityEngine.TextRenderingModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Unity.TextMeshPro"><HintPath>$(GameManaged)/Unity.TextMeshPro.dll</HintPath><Private>false</Private></Reference>
+    <ReefReferenceFile Include="$(BepInExDir)/core/0Harmony.dll;$(BepInExDir)/core/BepInEx.dll" />
+    <ReefReferenceFile Include="$(GameManaged)/UnityEngine.dll;$(GameManaged)/UnityEngine.CoreModule.dll;$(GameManaged)/UnityEngine.UI.dll;$(GameManaged)/UnityEngine.UIModule.dll;$(GameManaged)/UnityEngine.ImageConversionModule.dll;$(GameManaged)/UnityEngine.TextRenderingModule.dll;$(GameManaged)/Unity.TextMeshPro.dll" />
+    <None Include="../Assets/reef-panel-v7.png" Link="Assets/reef-panel-v7.png" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../Assets/reef-surface-v7.png" Link="Assets/reef-surface-v7.png" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <Target Name="ValidateReefReferences" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="'$(GameManaged)' == ''" Text="Set SUNKENLAND_DIR, pass -p:GameDir, or supply both -p:GameManaged and -p:BepInExDir. Reference assemblies must come from your own Sunkenland/BepInEx installation." />
+    <Error Condition="'$(BepInExDir)' == ''" Text="Set -p:BepInExDir to the installed BepInEx directory, or supply -p:GameDir." />
+    <Error Condition="!Exists('%(ReefReferenceFile.Identity)')" Text="Required local reference is missing: %(ReefReferenceFile.Identity). Install BepInEx 5 and use a matching Sunkenland Mono installation." />
+    <Error Condition="!Exists('$(MSBuildProjectDirectory)/../Assets/reef-panel-v7.png') or !Exists('$(MSBuildProjectDirectory)/../Assets/reef-surface-v7.png')" Text="The two authored Reef UI PNGs must be present in the repository Assets directory." />
+  </Target>
+</Project>

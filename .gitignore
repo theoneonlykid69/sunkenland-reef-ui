@@ -1,0 +1,36 @@
+# Local builds and distributable archives
+**/bin/
+**/obj/
+dist/
+artifacts/
+vendor/
+.vs/
+.vscode/
+
+# Never commit game/loader binaries, local logs, saves, or secrets
+*.dll
+*.exe
+*.pdb
+*.bundle
+*.assets
+*.log
+*.cfg
+*.save
+*.sav
+*.bak
+*.backup
+*.dmp
+*.zip
+*.7z
+.env
+.env.*
+*credentials*
+.codex/
+.agents/
+
+# OS/editor noise
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.user
+*.suo

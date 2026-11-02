@@ -1,0 +1,46 @@
+name: Bug report
+description: Report a Reef UI layout, startup, or compatibility problem.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Reef UI is an unofficial mod. Please test with the current release and include enough detail to reproduce the problem.
+        Do not upload save files, game binaries, or full logs containing personal information. Redact usernames, local paths, Steam IDs, server addresses, chat, and private world names from screenshots/log snippets.
+  - type: input
+    id: mod_version
+    attributes:
+      label: Reef UI version
+      placeholder: 0.9.1
+    validations:
+      required: true
+  - type: input
+    id: game_version
+    attributes:
+      label: Sunkenland version
+      placeholder: Beta 0.9.35
+    validations:
+      required: true
+  - type: input
+    id: loader_version
+    attributes:
+      label: BepInEx version
+      placeholder: 5.4.23.6 Windows x64
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include the affected screen, resolution/UI scale, and what you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Screenshots and additional context
+      description: Mention other UI mods and single-player/host/client mode. Attach only screenshots and short redacted error snippets.
